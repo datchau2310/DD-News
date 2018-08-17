@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <form >
+    <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+        {{ csrf_field() }}
         <div id="box" class="animated bounceIn">
             <div id="top_header">
                 <img src="{{ asset('images/logo/logo.png') }}" alt="Admin Dashboard Logo">
