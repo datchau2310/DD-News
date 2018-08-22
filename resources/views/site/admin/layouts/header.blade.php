@@ -39,7 +39,7 @@
 		<img src="{{asset('images/logo/logo.png')}}" alt="Arise Admin Dashboard Logo">
 	</a>
 	<ul id="header-actions" class="clearfix">
-		<li class="list-box hidden-xs dropdown">
+		<li class="list-box d-none dropdown">
 			<a id="drop2" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
 				<i class="icon-warning2"></i>
 			</a>
@@ -76,7 +76,7 @@
 				<li class="dropdown-footer">See all the notifications</li>
 			</ul>
 		</li>
-		<li class="list-box hidden-xs dropdown">
+		<li class="list-box d-none dropdown">
 			<a id="drop3" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
 				<i class="icon-archive2"></i>
 			</a>
@@ -133,7 +133,7 @@
 				<li class="dropdown-footer">See all the tasks</li>
 			</ul>
 		</li>
-		<li class="list-box user-admin hidden-xs dropdown">
+		<li class="list-box user-admin d-none dropdown">
 			<div class="admin-details">
 				<div class="name">Sean</div>
 				<div class="designation">System Admin</div>
@@ -156,7 +156,7 @@
 			</button>
 		</li>
 	</ul>
-	<div class="custom-search hidden-sm hidden-xs">
+	<div class="custom-search d-sm-none d-none">
 		<input type="text" class="search-query" placeholder="Search here ...">
 		<i class="icon-search3"></i>
 	</div>
