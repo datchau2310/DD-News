@@ -9,7 +9,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                     <div class="page-title">
                         <h3>Dashboard</h3>
-                        <p>Welcome to Arise Admin Dashboard</p>
+                        <p>Welcome to Admin Dashboard</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-12">
