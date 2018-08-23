@@ -135,8 +135,8 @@
 		</li>
 		<li class="list-box user-admin d-lg-block d-none dropdown">
 			<div class="admin-details">
-				<div class="name">Sean</div>
-				<div class="designation">System Admin</div>
+				<div class="name">{{ Auth::user()->username }}</div>
+				<div class="designation">{{ Auth::user()->name }}</div>
 			</div>
 			<a id="drop4" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
 				<i class="icon-user"></i>
@@ -146,7 +146,10 @@
 					<a href="profile.html">Edit Profile</a>
 					<a href="forgot-pwd.html">Change Password</a>
 					<a href="styled-inputs.html">Settings</a>
-					<a href="login.html">Logout</a>
+					<a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
 				</li>
 			</ul>
 		</li>
