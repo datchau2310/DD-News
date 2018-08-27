@@ -21,17 +21,12 @@
     <link href="{{ asset('plugins/css/animate.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('plugins/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('plugins/css/main.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('plugins/css/c3/c3.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('plugins/css/nvd3/nv.d3.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('plugins/css/horizontal-bar/chart.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('plugins/css/heatmap/cal-heatmap.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('plugins/css/circliful/circliful.css') }}" rel="stylesheet" media="screen">
-    <link href="{{ asset('plugins/css/odometer.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('css/layouts/styles.css') }}" rel="stylesheet" media="screen">
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     
     <!-- Shortcut icon -->
     <link rel="shortcut icon" href="{{ asset('images/shortcut-icon/fav.png') }}">
-        
+     @stack('css')
         
 </head>
 <header>

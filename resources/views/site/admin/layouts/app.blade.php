@@ -14,9 +14,12 @@
                 <span></span>
             </div>
         </div>
-        @yield('content')
-    
+        @include('site.admin.layouts.vertical-nav')
+        <div class="dashboard-wrapper">
 
-    @include('site.admin.layouts.footer')
+            @yield('content')
+
+        </div>
+         @include('site.admin.layouts.footer')
     </body>
 </html>

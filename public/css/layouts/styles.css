@@ -1,0 +1,31 @@
+div.dataTables_wrapper div.dataTables_paginate ul.pagination{
+	display: inline-block;
+	border-radius: 4px;
+
+}
+div.dataTables_wrapper div.dataTables_paginate .pagination>li {
+    display: inline;
+}
+div.dataTables_wrapper div.dataTables_paginate .pagination>li a,div.dataTables_wrapper div.dataTables_paginate .pagination>li span{
+	position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;
+}
+.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+    cursor: not-allowed;
+}
+.form-control {
+  border: 1px solid #556174;
+  background: #353C48;
+  padding: 6px 10px;
+  -webkit-transition: all .3s ease-out;
+  -moz-transition: all .3s ease-out;
+  -ms-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+  color: #d0d5dc;
+}
+.form-control:focus{
+	background-color: inherit;
+}

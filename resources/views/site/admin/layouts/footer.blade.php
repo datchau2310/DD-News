@@ -16,13 +16,11 @@
 <script src="{{ asset('plugins/js/horizontal-bar/horizBarCustom.js') }}"></script>
 <script src="{{ asset('plugins/js/gaugemeter/gaugeMeter-2.0.0.min.js') }}"></script>
 <script src="{{ asset('plugins/js/gaugemeter/gaugemeter.custom.js') }}"></script>
-<script src="{{ asset('plugins/js/heatmap/cal-heatmap.custom.js') }}"></script>
-<script src="{{ asset('plugins/js/heatmap/cal-heatmap.min.js') }}"></script>
-<script src="{{ asset('plugins/js/odometer/custom-odometer.js') }}"></script>
-<script src="{{ asset('plugins/js/odometer/odometer.min.js') }}"></script>
 <script src="{{ asset('plugins/js/percircle/percircle.min.js') }}"></script>
 <script src="{{ asset('plugins/js/percircle/percircle.custom.js') }}"></script>
 <script src="{{ asset('plugins/js/circliful/circliful.min.js') }}"></script>
 <script src="{{ asset('plugins/js/circliful/circliful.custom.js') }}"></script>
 <script src="{{ asset('plugins/js/custom.js') }}"></script>
+
+@stack('js')
     

@@ -4,10 +4,10 @@
 </button>
 <div class="user-details clearfix">
 	<a href="profile.html" class="user-img">
-		<img src="{{asset('images/thumbs/user1.png')}}" alt="User Info">
+		<img src="{{asset('images/thumbs')}}/{{Auth::user()->image}}" alt="User Info">
 			<span class="likes-info">9</span>
 		</a>
-		<h5 class="user-name">Sean</h5>
+		<h5 class="user-name">{{Auth::user()->username}}</h5>
 	</div>
 	<ul class="menu clearfix">
 		<li class="active selected">
