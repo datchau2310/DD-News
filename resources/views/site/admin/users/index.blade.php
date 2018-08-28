@@ -25,7 +25,8 @@
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="panel panel-light no-margin">
 				<div class="panel-heading">
-					<h4>Copy Print Buttons</h4>
+					<h4>User Manage</h4>
+					<a href="javascript:void(0)" class="btn btn-success btn-transparent btn-rounded">Success</a>
 				</div>
 				<div class="panel-body">
 					<div class="table-responsive">
@@ -514,65 +515,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- Row ends -->
-
-	<!-- Row Starts -->
-	<div class="row gutter">
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<div class="panel panel-red">
-				<div class="panel-heading">
-					<h4>Databar Users Last five days</h4>
-				</div>
-				<div class="panel-body">
-					<div class="table-responsive">
-						<table class="table table-bordered table-hover table-databar no-margin">
-							<thead>
-								<tr>
-									<th style="width:25%">Users</th>
-									<th style="width:25%">Visits</th>
-									<th style="width:25%">Clicks</th>
-									<th style="width:25%">Subscriptions</th>
-								</tr>
-								</thead>
-								<tbody>
-								<tr>
-									<td>9981</td>
-									<td>3217</td>
-									<td>1179</td>
-									<td>2174</td>
-								</tr>
-								<tr>
-									<td>6652</td>
-									<td>1510</td>
-									<td>3273</td>
-									<td>4110</td>
-								</tr>
-								<tr>
-									<td>3762</td>
-									<td>6115</td>
-									<td>3373</td>
-									<td>2515</td>
-								</tr>
-								<tr>
-									<td>4762</td>
-									<td>3120</td>
-									<td>3350</td>
-									<td>6320</td>
-								</tr>
-								<tr>
-									<td>5361</td>
-									<td>3125</td>
-									<td>4215</td>
-									<td>1125</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Row Ends -->			
+	<!-- Row ends -->			
 
 	</div>
 @endsection

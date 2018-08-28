@@ -11,9 +11,21 @@
 	</div>
 	<ul class="menu clearfix">
 		<li class="active selected">
-			<a href="#">
+			<a href="{{route('site.admin.dashboard')}}">
 				<i class="icon-air-play"></i>
 				<span class="menu-item">Dashboard</span>
+			</a>
+		</li>
+		<li>
+			<a href="{{route('site.admin.tag.index')}}">
+				<i class="icon-tag"></i>
+				<span class="menu-item">Tags</span>
+			</a>
+		</li>
+		<li>
+			<a href="{{route('site.admin.user.index')}}">
+				<i class="icon-head"></i>
+				<span class="menu-item">User</span>
 			</a>
 		</li>
 		<li>

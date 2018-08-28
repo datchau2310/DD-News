@@ -14,7 +14,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        return view('site.admin.tag.index');
+        return view('site.admin.tags.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('site.admin.tags.create');
     }
 
     /**
@@ -35,7 +35,15 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        request()->validate([
+            'name' => 'require'
+        ]);
+        $tag = new Tag();
+        $tag->name = $request->tag;
+        $tag->slug = str_slug($request->name);
+        $tag->save();
+
+        return redirect()->route('site.admin.tags.index');
     }
 
     /**
