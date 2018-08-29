@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Tag;
 class TagController extends Controller
 {
     /**
@@ -43,7 +43,7 @@ class TagController extends Controller
         $tag->slug = str_slug($request->name);
         $tag->save();
 
-        return redirect()->route('site.admin.tags.index');
+        return redirect()->route('site.admin.tag.index');
     }
 
     /**
@@ -88,6 +88,7 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Tag::find($id)->delete();
+        return redirect()->route('site.admin.tag.index')->with('success','Tag delected successfully');
     }
 }

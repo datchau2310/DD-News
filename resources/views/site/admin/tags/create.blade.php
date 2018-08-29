@@ -36,7 +36,7 @@
 							<div class="row gutter">
 								<div class="col-md-12">
 									<a href="{{route('site.admin.tag.index')}}" class="btn btn-danger">Back</a>
-									<button type="button" class="btn btn-info">Submit</button>
+									<button type="submit" class="btn btn-info">Submit</button>
 								</div>
 							</div>
 						</div>
