@@ -27,7 +27,6 @@
 						<div class="form-group">
 							<div class="row gutter">
 								<div class="col-md-12">
-									<label class="control-label">Tag name</label>
 									<input type="text" class="form-control" placeholder="Tag name" name="tag">
 								</div>
 							</div>

@@ -30,36 +30,33 @@
 				<div class="panel-body">
 					<div class="table-responsive">
 						<table id="copy-print-csv" class="display table table-striped table-bordered no-margin">
-						  <thead>
-						    <tr>
-						      <th>Name</th>
-						      <th>Position</th>
-						      <th>Office</th>
-						      <th>Age</th>
-						      <th>Start date</th>
-						      <th>Salary</th>
-						    </tr>
-						  </thead>
-						  <tfoot>
-						    <tr>
-						      <th>Name</th>
-						      <th>Position</th>
-						      <th>Office</th>
-						      <th>Age</th>
-						      <th>Start date</th>
-						      <th>Salary</th>
-						    </tr>
-						  </tfoot>
-						  <tbody>
-						    <tr>
-						      <td>Tiger Nixon</td>
-						      <td>System Architect</td>
-						      <td>Edinburgh</td>
-						      <td>61</td>
-						      <td>2011/04/25</td>
-						      <td>$320,800</td>
-						    </tr>
-						  </tbody>
+						  	<thead>
+							    <tr>
+									 <th>ID</th>
+								     <th>Name</th>
+								     <th>Created_at</th>
+								     <th>Update_at</th>
+								     <th>Action</th>
+							    </tr>
+						  	</thead>
+						  	<tbody>
+							  	@foreach($tags as $tag)
+							    <tr>
+							    	<td>{{ ++$i }}</td>
+							        <td>{{$tag->name}}</td>
+							      	<td>{{$tag->created_at}}</td>
+							      	<td>{{$tag->update_at}}</td>
+							      	<td class="text-center">
+							      		<a href="{{route('site.admin.tag.edit',$tag->id)}}" class="btn btn-success btn-sm"><i class="icon-edit"></i> Edit</a>
+							      		<button type="button" class="btn btn-danger btn-sm" onclick="deleteTag({{$tag->id}})" ><i class="icon-cross2"></i> Delete</button>
+							      		<form id="delete-form-{{$tag->id}}" action="{{route('site.admin.tag.destroy',$tag->id)}}" method="POST" class="d-none">
+							      			@csrf
+							      			@method('DELETE')
+							      		</form>
+							      	</td>
+							    </tr>	
+							    @endforeach					  
+							</tbody>
 						</table>
 					</div>
 				</div>
@@ -89,5 +86,29 @@
 	<script src="{{asset('/plugins/js/datatables/pdfmake.min.js')}}"></script>
 	<script src="{{asset('/plugins/js/datatables/vfs_fonts.js')}}"></script>
 	<script src="{{asset('/plugins/js/datatables/html5.min.js')}}"></script>
-	<script src="{{asset('/plugins/js/datatables/buttons.print.min.js')}}"></script>	
+	<script src="{{asset('/plugins/js/datatables/buttons.print.min.js')}}"></script>
+	<script src="{{asset('/plugins/js/sweetalert2.all.min.js')}}"></script>
+	<script type="text/javascript">
+		function deleteTag(id){
+			swal({
+				title: 'Are you sure?',
+				text: "You won't be able to revert this!",
+				type: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Yes, delete it!'
+			}).then((result) => {
+			  	if (result.value) {
+			  		event.preventDefault();
+			  		document.getElementById('delete-form-'+id).submit();
+				    swal(
+				      'Deleted!',
+				      'Your file has been deleted.',
+				      'success'
+				    )
+				}
+			});
+		}
+	</script>
 @endpush

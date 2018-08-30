@@ -21,6 +21,17 @@
 <script src="{{ asset('plugins/js/circliful/circliful.min.js') }}"></script>
 <script src="{{ asset('plugins/js/circliful/circliful.custom.js') }}"></script>
 <script src="{{ asset('plugins/js/custom.js') }}"></script>
-
+ 
+<script src="{{ asset('plugins/js/toastr.min.js') }}"></script>  
+{!! Toastr::message() !!}
+<script>
+	@if($errors->any())
+		@foreach($errors->all() as $error)
+			toastr.error('{{ $error }}','Error',{
+				closeButton:true,
+				progressBar:true,
+			});
+		@endforeach
+	@endif
+</script>
 @stack('js')
-    

@@ -22,6 +22,7 @@
     <link href="{{ asset('plugins/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('plugins/css/main.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('css/layouts/styles.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('plugins/css/toastr.min.css') }}" rel="stylesheet" media="screen">
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     
     <!-- Shortcut icon -->

@@ -36,16 +36,16 @@
 			</a>
 			<ul>
 				<li>
-					<a href="tasks.html">Tasks</a>
+					<a href="">Tasks</a>
 				</li>
 				<li>
-					<a href="cards.html">Cards</a>
+					<a href="">Cards</a>
 				</li>
 				<li>
-					<a href="users.html">Users</a>
+					<a href="">Users</a>
 				</li>
 				<li>
-					<a href="project-list.html">Project List</a>
+					<a href="">Project List</a>
 				</li>
 			</ul>
 		</li>

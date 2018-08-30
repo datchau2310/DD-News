@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Brian2694\Toastr\Facades\Toastr;
 use App\Tag;
 class TagController extends Controller
 {
@@ -14,7 +16,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        return view('site.admin.tags.index');
+        $tags = Tag::latest()->paginate(5);
+        return view('site.admin.tags.index',compact('tags'))->with('i',(request()->input('page',1)-1)*5);
     }
 
     /**
@@ -36,13 +39,13 @@ class TagController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'name' => 'require'
+            'tag' => 'required'
         ]);
         $tag = new Tag();
         $tag->name = $request->tag;
-        $tag->slug = str_slug($request->name);
+        $tag->slug = str_slug($request->tag);
         $tag->save();
-
+        Toastr::success('Tag Successfully Saved','Success');
         return redirect()->route('site.admin.tag.index');
     }
 
@@ -65,7 +68,8 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tag = Tag::find($id);
+        return view('site.admin.tags.edit',compact('tag'));
     }
 
     /**
@@ -77,7 +81,12 @@ class TagController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tag = Tag::find($id);
+        $tag->name = $request->edit_tag;
+        $tag->slug = str_slug($request->edit_tag);
+        $tag->update();
+        Toastr::success('Tag Successfully Update','Success');
+        return redirect()->route('site.admin.tag.index');
     }
 
     /**
@@ -89,6 +98,7 @@ class TagController extends Controller
     public function destroy($id)
     {
         Tag::find($id)->delete();
-        return redirect()->route('site.admin.tag.index')->with('success','Tag delected successfully');
+        Toastr::success('Tag Successfully Delected','Success');
+        return redirect()->route('site.admin.tag.index');
     }
 }
