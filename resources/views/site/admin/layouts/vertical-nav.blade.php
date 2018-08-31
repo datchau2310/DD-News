@@ -29,6 +29,12 @@
 			</a>
 		</li>
 		<li>
+			<a href="{{route('site.admin.category.index')}}">
+				<i class="icon-notebook"></i>
+				<span class="menu-item">Category</span>
+			</a>
+		</li>
+		<li>
 			<a href="#">
 				<i class="icon-lab3"></i>
 				<span class="menu-item">Projects</span>
