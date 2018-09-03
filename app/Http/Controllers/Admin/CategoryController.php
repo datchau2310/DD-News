@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
+use Brian2694\Toastr\Facades\Toastr;
 
 
 class CategoryController extends Controller
@@ -21,7 +22,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::latest()->paginate(10);
-        return view('site.admin.category.index',compact('categories'));
+        return view('site.admin.category.index',compact('categories'))->with('i',(request()->input('page',1)-1)*5);
     }
 
     /**
@@ -58,9 +59,9 @@ class CategoryController extends Controller
             if (!Storage::disk('public')->exists('category')) {
                 Storage::disk('public')->makeDirectory('category');
             }
-            
+
             // resize image for category and upload
-            $category = Image::make($image)->resize(1600,479)->save();
+            $category = Image::make($image)->resize(1600,479)->stream();
             Storage::disk('public')->put('category/'.$imagename,$category);
 
             // check category slider dir is exists
@@ -69,12 +70,11 @@ class CategoryController extends Controller
             }
 
             // resize image for category slider and upload
-            $slider = Image::make($image)->resize(500,333)->save();
+            $slider = Image::make($image)->resize(500,333)->stream();
             Storage::disk('public')->put('category/'.$imagename,$slider);
         }else{
             $imagename = "default.png";
-        }        
-
+        }
         $category = new Category;
         $category->name = $request->name_category;
         $category->slug = $slug;

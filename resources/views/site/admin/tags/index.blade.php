@@ -45,7 +45,7 @@
 							    	<td>{{ ++$i }}</td>
 							        <td>{{$tag->name}}</td>
 							      	<td>{{$tag->created_at}}</td>
-							      	<td>{{$tag->update_at}}</td>
+							      	<td>{{$tag->updated_at}}</td>
 							      	<td class="text-center">
 							      		<a href="{{route('site.admin.tag.edit',$tag->id)}}" class="btn btn-success btn-sm"><i class="icon-edit"></i> Edit</a>
 							      		<button type="button" class="btn btn-danger btn-sm" onclick="deleteTag({{$tag->id}})" ><i class="icon-cross2"></i> Delete</button>

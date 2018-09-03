@@ -34,6 +34,7 @@
 							    <tr>
 									 <th>ID</th>
 								     <th>Name</th>
+								     <th>Image</th>
 								     <th>Created_at</th>
 								     <th>Update_at</th>
 								     <th>Action</th>
@@ -43,12 +44,13 @@
 							  	@foreach($categories as $category)
 							    <tr>
 							    	<td>{{ ++$i }}</td>
-							        <td>{{$tag->name}}</td>
-							      	<td>{{$tag->created_at}}</td>
-							      	<td>{{$tag->update_at}}</td>
+							        <td>{{$category->name}}</td>
+							        <td><img src="{{asset('storage/app/public/category')}}/{{$category->image}}"></td>
+							      	<td>{{$category->created_at}}</td>
+							      	<td>{{$category->updated_at}}</td>
 							      	<td class="text-center">
 							      		<a href="{{route('site.admin.category.edit',$category->id)}}" class="btn btn-success btn-sm"><i class="icon-edit"></i> Edit</a>
-							      		<button type="button" class="btn btn-danger btn-sm" onclick="deleteCategory({{$tag->id}})" ><i class="icon-cross2"></i> Delete</button>
+							      		<button type="button" class="btn btn-danger btn-sm" onclick="deleteCategory({{$category->id}})" ><i class="icon-cross2"></i> Delete</button>
 							      		<form id="delete-form-{{$category->id}}" action="{{route('site.admin.category.destroy',$category->id)}}" method="POST" class="d-none">
 							      			@csrf
 							      			@method('DELETE')
