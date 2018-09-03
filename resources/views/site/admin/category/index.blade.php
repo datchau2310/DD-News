@@ -45,7 +45,7 @@
 							    <tr>
 							    	<td>{{ ++$i }}</td>
 							        <td>{{$category->name}}</td>
-							        <td><img src="{{asset('storage/app/public/category')}}/{{$category->image}}"></td>
+							        <td><img src="storage/app/public/category/test-2018-09-03-5b8cdc3c00fef.png"></td>
 							      	<td>{{$category->created_at}}</td>
 							      	<td>{{$category->updated_at}}</td>
 							      	<td class="text-center">
