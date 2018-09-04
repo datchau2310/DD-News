@@ -45,7 +45,7 @@ class CategoryController extends Controller
     { 
         request()->validate([
             'name_category' => 'required',
-            'image' => 'required|mimes:png',
+            'image' => 'required|mimes:jpeg,png,jpg',
         ]);
         // get form image
         $image = $request->file('image');
@@ -105,7 +105,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('site.admin.category.edit',compact('category'));
     }
 
     /**
@@ -117,7 +118,59 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        request()->validate([
+            'name_category' => 'required',
+            'image' => 'mimes:jpeg,png,jpg',
+        ]);
+        // get form image
+        $image = $request->file('image');
+        $slug = str_slug($request->name_category);
+        $category = Category::find($id);
+        if (isset($image)) {
+            // make unique name for image
+            $currentDate = Carbon::now()->toDateString();
+            $imagename = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+
+            //check category dir is exists
+            if (!Storage::disk('public')->exists('category')) 
+            {
+                Storage::disk('public')->makeDirectory('category');
+            }
+            // delete old image
+            if (Storage::disk('public')->exists('category/'.$category->image)) 
+            {
+                Storage::disk('public')->delete('category/'.$category->image);
+            }
+
+            // resize image for category and upload
+            $categoryimage = Image::make($image)->resize(1600,479)->stream();
+            Storage::disk('public')->put('category/'.$imagename,$categoryimage);
+
+            // check category slider dir is exists
+            if (!Storage::disk('public')->exists('category/slider')) 
+            {
+                Storage::disk('public')->makeDirectory('category/slider');
+            }
+            // delete old slider image
+            if (Storage::disk('public')->exists('category/slider/'.$category->image)) 
+            {
+                Storage::disk('public')->delete('category/slider/'.$category->image);
+            }
+
+            // resize image for category slider and upload
+            $slider = Image::make($image)->resize(500,333)->stream();
+            Storage::disk('public')->put('category/'.$imagename,$slider);
+        }else{
+            $imagename = $category->image;
+        }
+
+        $category->name = $request->name_category;
+        $category->slug = $slug;
+        $category->image = $imagename;
+
+        $category->save();
+        Toastr::success('Category Successfully Update','success');
+        return redirect()->route('site.admin.category.index');
     }
 
     /**
@@ -128,6 +181,19 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+
+        if (Storage::disk('public')->exists('category/'.$category->image))
+        {
+            Storage::disk('public')->delete('category/'.$category->image);
+        }
+
+        if (Storage::disk('public')->exists('category/slider/'.$category->image)) 
+        {
+             Storage::disk('public')->delete('category/slider/'.$category->image);
+        }
+        $category->delete();
+        Toastr::success('Category Successfully Delete','success');
+        return redirect()->route('site.admin.category.index');
     }
 }

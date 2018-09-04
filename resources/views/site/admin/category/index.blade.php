@@ -29,7 +29,7 @@
 				</div>
 				<div class="panel-body">
 					<div class="table-responsive">
-						<table id="copy-print-csv" class="display table table-striped table-bordered no-margin">
+						<table id="copy-print-csv" class="display table table-striped table-bordered no-margin text-center">
 						  	<thead>
 							    <tr>
 									 <th>ID</th>
@@ -45,7 +45,8 @@
 							    <tr>
 							    	<td>{{ ++$i }}</td>
 							        <td>{{$category->name}}</td>
-							        <td><img src="storage/app/public/category/test-2018-09-03-5b8cdc3c00fef.png"></td>
+							        <?php $link = $category->image;?>
+							        <td><img class="img-fluid" src="/storage/category/{{$link}}" width="50px;" height="50px;"></td>
 							      	<td>{{$category->created_at}}</td>
 							      	<td>{{$category->updated_at}}</td>
 							      	<td class="text-center">
