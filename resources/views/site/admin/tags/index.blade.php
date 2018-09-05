@@ -25,15 +25,20 @@
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="panel panel-light no-margin">
 				<div class="panel-heading">
-					<a href="{{route('site.admin.tag.create')}}" class="btn btn-success btn-transparent">Add new tag</a>
+					<span class="text-red">
+						ALL TAGS
+						<span class="text-green">{{$tags->count()}}</span>
+					</span>
+					<a href="{{route('site.admin.tag.create')}}" class="btn btn-success btn-transparent float-right">Add new tag</a>
 				</div>
 				<div class="panel-body">
 					<div class="table-responsive">
-						<table id="copy-print-csv" class="display table table-striped table-bordered no-margin">
+						<table id="copy-print-csv" class="display table table-striped table-bordered no-margin text-center">
 						  	<thead>
 							    <tr>
 									 <th>ID</th>
 								     <th>Name</th>
+								     <th>Post Count</th>
 								     <th>Created_at</th>
 								     <th>Update_at</th>
 								     <th>Action</th>
@@ -44,6 +49,7 @@
 							    <tr>
 							    	<td>{{ ++$i }}</td>
 							        <td>{{$tag->name}}</td>
+							        <td>{{$tag->posts->count()}}</td>
 							      	<td>{{$tag->created_at}}</td>
 							      	<td>{{$tag->updated_at}}</td>
 							      	<td class="text-center">

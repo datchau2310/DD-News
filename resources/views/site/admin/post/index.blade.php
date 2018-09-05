@@ -13,7 +13,7 @@
 		<div class="row gutter">
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				<div class="page-title">
-					<h3>Categories Manage</h3>
+					<h3>Post Manage</h3>
 				</div>
 			</div>
 		</div>
@@ -26,10 +26,10 @@
 			<div class="panel panel-light no-margin">
 				<div class="panel-heading">
 					<span class="text-red">
-						ALL CATEGORIES
-						<span class="text-green">{{$categories->count()}}</span>
+						ALL POSTS
+						<span class="text-green">{{$posts->count()}}</span>
 					</span>
-					<a href="{{route('site.admin.category.create')}}" class="btn btn-success btn-transparent float-right">Add new category</a>
+					<a href="{{route('site.admin.post.create')}}" class="btn btn-success btn-transparent float-right">Add new Post</a>
 				</div>
 				<div class="panel-body">
 					<div class="table-responsive">
@@ -37,27 +37,45 @@
 						  	<thead>
 							    <tr>
 									 <th>ID</th>
-								     <th>Name</th>
-								     <th>Image</th>
-								     <th>Post Count</th>
+								     <th>Title</th>
+								     <th>Author</th>
+								     <th><i class="">Visibility</i></th>
+								     <th>Is Approved</th>
+								     <th>Status</th>
 								     <th>Created_at</th>
 								     <th>Update_at</th>
 								     <th>Action</th>
 							    </tr>
 						  	</thead>
 						  	<tbody>
-							  	@foreach($categories as $category)
+							  	@foreach($posts as $post)
 							    <tr>
 							    	<td>{{ ++$i }}</td>
-							        <td>{{$category->name}}</td>
-							        <td><img class="img-fluid" src="/storage/category/{{$category->image}}" width="50px;" height="50px;"></td>
-							        <td>{{$category->posts->count()}}</td>
-							      	<td>{{$category->created_at}}</td>
-							      	<td>{{$category->updated_at}}</td>
+							        <td>{{ str_limit($post->title,'10')}}</td>
+							        <td>{{$post->user->name}}</td>
+							        <td>{{$post->view_count}}</td>
+							        <td>
+							        	@if($post->is_approved == true)
+
+							        		<span class="">Approved</span>
+							        	@else
+							        		<span class="">Pending</span>
+							        	@endif
+							        </td>
+							        <td>
+							        	@if($post->status == true)
+
+							        		<span class="">Published</span>
+							        	@else
+							        		<span class="">Pending</span>
+							        	@endif
+							        </td>
+							      	<td>{{$post->created_at}}</td>
+							      	<td>{{$post->updated_at}}</td>
 							      	<td class="text-center">
-							      		<a href="{{route('site.admin.category.edit',$category->id)}}" class="btn btn-success btn-sm"><i class="icon-edit"></i> Edit</a>
-							      		<button type="button" class="btn btn-danger btn-sm" onclick="deleteCategory({{$category->id}})" ><i class="icon-cross2"></i> Delete</button>
-							      		<form id="delete-form-{{$category->id}}" action="{{route('site.admin.category.destroy',$category->id)}}" method="POST" class="d-none">
+							      		<a href="{{route('site.admin.post.edit',$post->id)}}" class="btn btn-success btn-sm"><i class="icon-edit"></i> Edit</a>
+							      		<button type="button" class="btn btn-danger btn-sm" onclick="deletePost({{$post->id}})" ><i class="icon-cross2"></i> Delete</button>
+							      		<form id="delete-form-{{$post->id}}" action="{{route('site.admin.post.destroy',$post->id)}}" method="POST" class="d-none">
 							      			@csrf
 							      			@method('DELETE')
 							      		</form>
@@ -97,7 +115,7 @@
 	<script src="{{asset('/plugins/js/datatables/buttons.print.min.js')}}"></script>
 	<script src="{{asset('/plugins/js/sweetalert2.all.min.js')}}"></script>
 	<script type="text/javascript">
-		function deleteCategory(id){
+		function deletePost(id){
 			swal({
 				title: 'Are you sure?',
 				text: "You won't be able to revert this!",

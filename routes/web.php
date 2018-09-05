@@ -24,6 +24,7 @@ Route::group(['as'=>'site.admin.','prefix' => 'admin','namespace' => 'Admin', 'm
 	Route::resource('tag','TagController');
 	Route::resource('category','CategoryController');
 	Route::resource('user','UserController');
+	Route::resource('post','PostController');
 });
 
 Route::group(['as'=>'site.author.','prefix' => 'author','namespace' => 'Author', 'middleware' => ['auth','author']],function(){
