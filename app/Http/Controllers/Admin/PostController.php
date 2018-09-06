@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Post;
+use App\Category;
+use App\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -26,7 +28,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::latest()->get();
+        $tags = Tag::latest()->get();
+        return view('site.admin.post.create',compact('tags','categories'));
     }
 
     /**

@@ -39,7 +39,7 @@
 									 <th>ID</th>
 								     <th>Title</th>
 								     <th>Author</th>
-								     <th><i class="">Visibility</i></th>
+								     <th>Visibility</th>
 								     <th>Is Approved</th>
 								     <th>Status</th>
 								     <th>Created_at</th>

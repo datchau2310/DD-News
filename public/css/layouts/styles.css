@@ -30,5 +30,5 @@ div.dataTables_wrapper div.dataTables_paginate .pagination>li a,div.dataTables_w
   color: #d0d5dc;
 }
 .form-control:focus{
-	background-color: inherit;
+	background-color: #353C48;
 }
