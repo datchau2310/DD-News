@@ -1,5 +1,4 @@
 @extends('site.admin.layouts.app')
-
 @section('content')
 <div class="container-fluid">
 	<!-- Row starts -->
@@ -97,7 +96,7 @@
 								<div class="form-group">
 									<div class="row gutter">
 										<div class="col-md-12">
-											<textarea name="content" id="editor"></textarea>
+											<textarea name="body" id="editor"></textarea>
 										</div>
 									</div>
 								</div>
@@ -112,5 +111,15 @@
 <!-- Row ends -->
 @endsection
 @push('js')
-	
+	<script src="{{asset('/plugins/js/ckeditor/ckeditor.js')}}"></script>
+	<script> 
+		CKEDITOR.replace('editor',{
+			filebrowserBrowseUrl: '{{ asset('plugins/js/ckfinder/ckfinder.html') }}',
+	        filebrowserImageBrowseUrl: '{{ asset('plugins/js/ckfinder/ckfinder.html?type=Images') }}',
+	        filebrowserFlashBrowseUrl: '{{ asset('plugins/js/ckfinder/ckfinder.html?type=Flash') }}',
+	        filebrowserUploadUrl: '{{ asset('plugins/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+	        filebrowserImageUploadUrl: '{{ asset('plugins/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+	        filebrowserFlashUploadUrl: '{{ asset('plugins/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
+		}); 
+	</script>
 @endpush
