@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Post;
 use App\Category;
 use App\Tag;
+use Auth;
+use Toastr;
+use Storage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -41,7 +44,50 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required',
+            'image' => 'required',
+            'categories' => 'required',
+            'tags' => 'required',
+            'body' => 'required',
+        ]); 
+        $image = $request->file('image');
+        $slug = str_slug($request->title);
+        if(isset($image)){
+            // make unique name for image
+            $currentDate = Carbon::now()->toDateString();
+            $imageName = $slug.'-'.$currentDate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+
+            if (!Storage::disk('public')->exists('post')) {
+                Storage::disk('public')->makeDircetory('post');
+            }
+
+            $postImage = Image::make($image)->resize(1600,1066)->save();
+            Storage::disk('public')->put('/post'.$imageName,$postImage);
+        }else{
+            $imageName = 'defaut.png';
+        }
+        $post = new Post();
+        $post->user_id = Auth::id();
+        $post->title = $request->title;
+        $post->slug = $slug;
+        $post->image = $imageName;
+        $post->body = $request->body;
+
+        if (isset($request->status)) {
+            $post->status = true;
+        }else{
+            $post->status = false;
+        }
+
+        $post->is_approved = true;
+        $post->save();
+
+        $post->categories()->attach($request->categories);
+        $post->tags()->attach($request->tags);
+
+        Toastr::success('Post Successfully Saved','Success');
+        return redirect()->route('site.admin.post.index');
     }
 
     /**
@@ -86,6 +132,14 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if (Storage::disk('public')->exists('post/'.$post->image))
+        {
+            Storage::disk('public')->delete('post/'.$post->image);
+        }
+        $post->categories()->detach();
+        $post->tags()->detach();
+        $post->delete();
+        Toastr::success('Post Successfully Deleted :)','Success');
+        return redirect()->back();
     }
 }

@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid">
 	<!-- Row starts -->
-	<form action="{{route('site.admin.tag.store')}}" method="post">
+	<form action="{{route('site.admin.post.store')}}" method="post">
 		@csrf
 		<div class="row gutter">
 			<div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
@@ -48,26 +48,25 @@
 					<div class="panel-body">
 						<div class="row gutter">
 							<div class="col-lg-12">
-								<div class="form-group">
-									<div class="row gutter">
-										<div class="col-md-12">
-											<select class="form-control">
-												@foreach($categories as $category)
-												<option value="{{$category->id}}">{{$category->name}}</option>
-												@endforeach
-											</select>
-										</div>
+								<div class="form-group form-float">
+									<div class="form-line {{ $errors->has('categories') ? 'focused error' : '' }}">
+										<label for="category">Select Category</label>
+										<select name="categories[]" id="category" class="form-control" >
+											@foreach($categories as $category)
+											<option value="{{ $category->id }}">{{ $category->name }}</option>
+											@endforeach
+										</select>
 									</div>
 								</div>
-								<div class="form-group">
-									<div class="row gutter">
-										<div class="col-md-12">
-											<select class="form-control">
-												@foreach($tags as $tag)
-												<option value="{{$tag->id}}">{{$tag->name}}</option>
-												@endforeach
-											</select>
-										</div>
+
+								<div class="form-group form-float">
+									<div class="form-line {{ $errors->has('tags') ? 'focused error' : '' }}">
+										<label for="tag">Select Tags</label>
+										<select name="tags" id="tag" class="form-control">
+											@foreach($tags as $tag)
+											<option value="{{ $tag->id }}">{{ $tag->name }}</option>
+											@endforeach
+										</select>
 									</div>
 								</div>
 								<div class="form-group no-margin">

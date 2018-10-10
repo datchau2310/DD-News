@@ -50,7 +50,7 @@
 							    <tr>
 							    	<td>{{ ++$i }}</td>
 							        <td>{{$category->name}}</td>
-							        <td><img class="img-fluid" src="/storage/category/{{$category->image}}" width="50px;" height="50px;"></td>
+							        <td><img class="img-fluid" src="{{asset('storage/category')}}/{{$category->image}}" width="50px;" height="50px;"></td>
 							        <td>{{$category->posts->count()}}</td>
 							      	<td>{{$category->created_at}}</td>
 							      	<td>{{$category->updated_at}}</td>
