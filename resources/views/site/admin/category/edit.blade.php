@@ -35,7 +35,7 @@
 						<div class="form-group">
 							<div class="row gutter">
 								<div class="col-md-12 mb-3">
-									<img src="/storage/category/{{$category->image}}">
+									<img src="{{ asset('storage/category') }}/{{$category->image}}">
 								</div>
 								<div class="col-md-12">
 									<span class="choose-file">Choose file</span>
