@@ -101,7 +101,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-
+        $posts = Post::latest()->get();
+        return view('site.admin.post.show',compact('post'));
     }
 
     /**

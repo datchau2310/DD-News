@@ -32,3 +32,8 @@ div.dataTables_wrapper div.dataTables_paginate .pagination>li a,div.dataTables_w
 .form-control:focus{
 	background-color: #353C48;
 }
+h3.task-name{
+    margin: 0 0 10px;
+    padding: 0 0 10px;
+    border-bottom: 1px dashed #4b5465;
+}

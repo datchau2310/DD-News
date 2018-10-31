@@ -73,6 +73,7 @@
 							      	<td>{{$post->created_at}}</td>
 							      	<td>{{$post->updated_at}}</td>
 							      	<td class="text-center">
+							      		<a href="{{route('site.admin.post.show',$post->id)}}" class="btn btn-info btn-sm"><i class="icon-eye3"></i> Show</a>
 							      		<a href="{{route('site.admin.post.edit',$post->id)}}" class="btn btn-success btn-sm"><i class="icon-edit"></i> Edit</a>
 							      		<button type="button" class="btn btn-danger btn-sm" onclick="deletePost({{$post->id}})" ><i class="icon-cross2"></i> Delete</button>
 							      		<form id="delete-form-{{$post->id}}" action="{{route('site.admin.post.destroy',$post->id)}}" method="POST" class="d-none">

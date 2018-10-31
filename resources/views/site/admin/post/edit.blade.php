@@ -27,7 +27,7 @@
 											<input type="file" class="file-upload-info" name="image" value="{{$post->image}}">
 										</div>
 										<div class="col-md-4">
-											<img src="{{ asset('storage/post') }}/{{$post->image}}" width="100%" height="87">
+											<img class="img-fluid" src="{{ asset('storage/post') }}/{{$post->image}}">
 										</div>
 									</div>
 								</div>
